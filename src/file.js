@@ -10,7 +10,7 @@ class File {
   	var p = new Promise((rs) => {
 	  	fs.readdir(dir, function(err, filenames) {
 		    if (err) log.error(err.message);
-		    rs(err, filenames);
+		    rs({ err: err, filenames: filenames });
 		  });
   	});
 

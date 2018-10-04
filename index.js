@@ -45,11 +45,13 @@ program
 
   			var file = new File();
   			var p = file.getAllFilesFromDir(dir);
-  			p.then((e, filenames) => {
-  				console.log(2, e);
-  				console.log(1, filenames);
+  			p.then(rs => {
+          if (rs.err) error(rs.err.message); 
+          else {
+            var filenames = rs.filenames;
+            console.log(filenames);
+          }
   			});
-
   		}
   	} else if (typeof(command) !== 'string') {
 			log.warn('Command missed!');
